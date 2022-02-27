@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Identifier",
+        "pattern":"^\\s*[\\p{L}_][\\p{L}0-9_]*",
+        "replaces":[
+            {
+                "name": "",
+                "pattern":"^\\s*|\\s*$"
+            }
+        ]
+    },
+    {
+        "name": "String",
+        "pattern":"^(\\s*)(\\\")((?:.|\\n\\s*(\\||\\/\\/))*)(\\\")",
+        "replaces":[
+            {
+                "pattern":"^\\s*\"|\"\\s*$"
+            },
+            {
+                "pattern":"\\t*\\|"
+            },
+            {
+                "pattern":"\\\"{2}",
+                "replace": "\""
+            },
+            {
+                "pattern":"\\s*\\/\\/.*"
+            }
+        ]
+    },
+    {
+        "name": "Preprocessor",
+        "pattern":"^[\\s]*#.*[^\\s]",
+        "replaces":[
+            {
+                "name": "",
+                "pattern":"^\\s*#"
+            }
+        ]
+    },
+    {
+        "name": "Number",
+        "pattern":"^[\\s]*[0-9]+\\.?[0-9]*([\\s]+|$)",
+        "replaces":[
+            {
+                "name": "",
+                "pattern":"^\\s*|\\s*$"
+            }
+        ]
+    },
+    {
+        "name": "Date",
+        "pattern":"^\\s*\\'[0-9]{8}([0-9]{6})?'\\s*",
+        "replaces":[
+            {
+                "name": "",
+                "pattern":"^\\s*'|'\\s*$"
+            }
+        ]
+    },
+    {
+        "name": "Comment",
+        "pattern":"^[\\s]*\\/\\/.*[^\\s]",
+        "delete": true
+    },
+    {
+        "name": "Operator",
+        "pattern":"^\\s*(\\+|\\-|\\*|\\/|<=|>=|<>|<|>|=|%|,|\\.|\\(|\\)|\\[|\\])\\s*",
+        "replaces":[
+            {
+                "name": "",
+                "pattern":"^\\s*|\\s*$"
+            }
+        ]
+    }
+
+]
